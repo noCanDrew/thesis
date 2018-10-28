@@ -343,7 +343,7 @@
 						$tempUsed = $used;
 						$tempP[$row][$b] = 1; 
 						$tempUsed[$b] = $row;
-						if(f($gammaA, $gammaB, $g1, $g2, $tempP, $tempUsed, $row + 1)) 
+						if(bt($gammaA, $gammaB, $g1, $g2, $tempP, $tempUsed, $row + 1)) 
 							return true;
 					}
 				}
