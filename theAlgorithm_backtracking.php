@@ -332,9 +332,9 @@
 	*/
 	function bt($gammaA, $gammaB, $g1, $g2, $p, $used, $row){
 		if($row == count($g1)){
-			if(matrixMult(matrixTranspose($p), matrixMult($g1, $p)) !== $g2) 
-				return false;
-			else return true;
+			if(matrixMult(matrixTranspose($p), matrixMult($g1, $p)) == $g2) 
+				return true;
+			else return false;
 		} else {
 			for($b = 0; $b < count($gammaB); $b+=1){
 				if($used[$b] == -1){
