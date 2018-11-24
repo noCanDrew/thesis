@@ -39,17 +39,17 @@
 		$used = array();
 		$temp = array();
 		for($a = 0; $a < $n; $a+=1){
-	      	do{																		  
-		      	$b = rand(0, $n - 1);
-	      	}while(in_array($b, $used));
-	      	$used[$a] = $b;
-	      	
-	      	$row = array();
-	      	for($c = 0; $c < $n; $c+=1){
-	      		if($c == $b) $row[$c] = 1;
-	      		else $row[$c] = 0;
-	      	}
-	      	$temp[$a] = $row;
+			do{																		  
+				$b = rand(0, $n - 1);
+			}while(in_array($b, $used));
+			$used[$a] = $b;
+			
+			$row = array();
+			for($c = 0; $c < $n; $c+=1){
+				if($c == $b) $row[$c] = 1;
+				else $row[$c] = 0;
+			}
+			$temp[$a] = $row;
 		}
 		return $temp;
 	}
@@ -63,19 +63,18 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		$p = rand(0,99); 
-		      		if($b == $a || $p < $density){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$g[$a][$b] = 1;
-		      			$g[$b][$a] = 1;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($b == $a || $p < $density){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$g[$a][$b] = 1;
+						$g[$b][$a] = 1;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -88,17 +87,16 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		$p = rand(0,99); 
-		      		if($b == $a || $p < $density){
-		      			$g[$a][$b] = 0;
-		      		} 
-		      		else{
-		      			$g[$a][$b] = 1;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($b == $a || $p < $density){
+						$g[$a][$b] = 0;
+					} else {
+						$g[$a][$b] = 1;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -112,20 +110,19 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		    		$p = rand(0,99); 
-		      		if($p < $density || ($b < $bipSize && $a < $bipSize) || 
-		      		($b >= $bipSize && $a >= $bipSize)){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$g[$a][$b] = 1;
-		      			$g[$b][$a] = 1;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($p < $density || ($b < $bipSize && $a < $bipSize) || 
+					($b >= $bipSize && $a >= $bipSize)){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$g[$a][$b] = 1;
+						$g[$b][$a] = 1;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -139,19 +136,18 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		if(($b < $bipSize && $a < $bipSize) || 
-		      		($b >= $bipSize && $a >= $bipSize)){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$g[$a][$b] = 1;
-		      			$g[$b][$a] = 1;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					if(($b < $bipSize && $a < $bipSize) || 
+					($b >= $bipSize && $a >= $bipSize)){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$g[$a][$b] = 1;
+						$g[$b][$a] = 1;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -165,21 +161,20 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		    		$p = rand(0,99); 
-		      		if($p < $density || ($b < $bipSize && $a < $bipSize) || 
-		      		($b >= $bipSize && $a >= $bipSize)){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$w = rand(1, 7);
-		      			$g[$a][$b] = $w;
-		      			$g[$b][$a] = $w;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($p < $density || ($b < $bipSize && $a < $bipSize) || 
+					($b >= $bipSize && $a >= $bipSize)){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$w = rand(1, 7);
+						$g[$a][$b] = $w;
+						$g[$b][$a] = $w;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -192,19 +187,18 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		$p = rand(0,99); 
-		      		if($p < $density){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$g[$a][$b] = 1;
-		      			$g[$b][$a] = 1;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($p < $density){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$g[$a][$b] = 1;
+						$g[$b][$a] = 1;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -217,20 +211,19 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		$p = rand(0,99); 
-		      		if($p < $density){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$w = rand(1, 7);
-		      			$g[$a][$b] = $w;
-		      			$g[$b][$a] = $w;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($p < $density){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$w = rand(1, 7);
+						$g[$a][$b] = $w;
+						$g[$b][$a] = $w;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -243,24 +236,23 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		$p = rand(0,99); 
-		      		if($p < $density){
-		      			$g[$a][$b] = 0;
-		      			$g[$b][$a] = 0;
-		      		} 
-		      		else{
-		      			$num = rand(1,9);
-		      			$w = array();
-		      			for($c = 0; $c < $num; $c+=1){
-		      				$w[$c] = rand(1, 7);
-		      			}
-		      			$g[$a][$b] = $w;
-		      			$g[$b][$a] = $w;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($p < $density){
+						$g[$a][$b] = 0;
+						$g[$b][$a] = 0;
+					} else {
+						$num = rand(1,9);
+						$w = array();
+						for($c = 0; $c < $num; $c+=1){
+							$w[$c] = rand(1, 7);
+						}
+						$g[$a][$b] = $w;
+						$g[$b][$a] = $w;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -273,22 +265,21 @@
 
 			$density = rand(25,75);
 			for($a = 0; $a < $n; $a+=1){
-		    	for($b = 0; $b < $n; $b+=1){
-		      		$p = rand(0,99); 
-		      		if($p < $density){
-		      			$g[$a][$b] = 0;
-		      		} 
-		      		else{
-		      			$num = rand(1,9);
-		      			$w = array();
-		      			for($c = 0; $c < $num; $c+=1){
-		      				$w[$c] = rand(1, 7);
-		      			}
-		      			$g[$a][$b] = $w;
-		      		} 
-		    	}
-		  	}
-		  	if(isConnected($g)) return $g; 
+				for($b = 0; $b < $n; $b+=1){
+					$p = rand(0,99); 
+					if($p < $density){
+						$g[$a][$b] = 0;
+					} else {
+						$num = rand(1,9);
+						$w = array();
+						for($c = 0; $c < $num; $c+=1){
+							$w[$c] = rand(1, 7);
+						}
+						$g[$a][$b] = $w;
+					} 
+				}
+			}
+			if(isConnected($g)) return $g; 
 		}
 	}
 
@@ -391,15 +382,15 @@
 			combinations-of-r-elements-in-a-given-array-of-size-n/
 		*/
 		function combinations($arr, $data, $start, $end, $index, $k){
-		    if($index == $k){
-		    	array_push($GLOBALS["list"], $data);
-		    	return;
-		    } else {
+			if($index == $k){
+				array_push($GLOBALS["list"], $data);
+				return;
+			} else {
 				for($a = $start; $a <= $end && $end - $a + 1 >= $k - $index; $a++){ 
-			        $data[$index] = $arr[$a]; 
-			        combinations($arr, $data, $a + 1, $end, $index + 1, $k);
-			    } 
-		    }
+					$data[$index] = $arr[$a]; 
+					combinations($arr, $data, $a + 1, $end, $index + 1, $k);
+				} 
+			}
 		} 
 
 		combinations($arr, $data, 0, $n - 1, 0, $k); 
@@ -428,35 +419,35 @@
 		- Utility used to convert directed graphs into undirected graphs
 		- Preserves bijective properties due to lemma 4.8
 	*/
-    function mirrorDirections($g){
-    	for($a = 0; $a < count($g); $a+=1){
-    		for($b = 0; $b < count($g); $b+=1){
-    			if($g[$a][$b] != 0 && $g[$b][$a] == 0) $g[$b][$a] = -1;
-    		}
-    	}
-    	return $g;  
-    }
+	function mirrorDirections($g){
+		for($a = 0; $a < count($g); $a+=1){
+			for($b = 0; $b < count($g); $b+=1){
+				if($g[$a][$b] != 0 && $g[$b][$a] == 0) $g[$b][$a] = -1;
+			}
+		}
+		return $g;  
+	}
 
-    /*
+	/*
 		- Utility used to convert mutli-edges into singular weighted edge.
 		- Preserves bijective properties due to lemma 4.9
-    */
-    function mux($g){
-    	for($a = 0; $a < count($g); $a+=1){
-    		for($b = 0; $b < count($g); $b+=1){
-    			if(is_array($g[$a][$b])){
-    				$temp = $g[$a][$b];
-    				sort($temp);
-    				$w = '';
-    				for($c = 0; $c < count($temp); $c+=1){
-    					$w .= $temp[$c] . '9';
-    				} 
-    				$g[$a][$b] = $w;
-    			}
-    		}
-    	}
-    	return $g; 
-    }
+	*/
+	function mux($g){
+		for($a = 0; $a < count($g); $a+=1){
+			for($b = 0; $b < count($g); $b+=1){
+				if(is_array($g[$a][$b])){
+					$temp = $g[$a][$b];
+					sort($temp);
+					$w = '';
+					for($c = 0; $c < count($temp); $c+=1){
+						$w .= $temp[$c] . '9';
+					} 
+					$g[$a][$b] = $w;
+				}
+			}
+		}
+		return $g; 
+	}
 
 	/*
 		Assumes $m1 and $m2 are equally sized
@@ -481,49 +472,87 @@
 	}
 
 	/*
-		Prints adjacency matrix in a nice, human readable format
+		- Prints adjacency matrix in a nice, human readable format
+		- The checking for is_array is used to handle multi graphs
 	*/
 	function printMatrix($m){
 		for($a = 0; $a < count($m); $a+=1){ 
 			$temp = $m[$a];
-	    	for($b = 0; $b < count($temp); $b+=1){
-	      		if(!is_array($temp[$b])) echo $temp[$b] . "&nbsp;&nbsp;";
-	      		else{
-	      			echo '{';
-	      			for($c = 0; $c < count($temp[$b]); $c+=1) echo $temp[$b][$c] . ', ';
-	      			echo "}&nbsp;&nbsp;";
-	      		}
-	    	}
-	    	echo '<br>';
-	  	}
+			for($b = 0; $b < count($temp); $b+=1){
+				if(!is_array($temp[$b])) echo $temp[$b] . "&nbsp;&nbsp;";
+				else{
+					echo '{';
+					for($c = 0; $c < count($temp[$b]); $c+=1) echo $temp[$b][$c] . ', ';
+					echo "}&nbsp;&nbsp;";
+				}
+			}
+			echo '<br>';
+		}
+	}
+
+	/*
+		Prints adjacency list for input graph
+	*/
+	function printAdjacencyList($g){
+		for($a = 0; $a < count($g); $a++){
+			$str = "";
+			for($b = 0; $b < count($g); $b++){
+				if($g[$a][$b] == 1) $str .= $b . " ";
+			}
+			echo $str . ";<br>";
+		}
 	}
 
 	/*
 		Determines if a graph is continuous or not. 
 	*/
-    function isConnected($g){
-    	$g = mux($g);
+	function isConnected($g){
+		$g = mux($g);
 
-    	$colorArr = array();
-    	for($a = 0; $a < count($g); $a+=1) $colorArr[$a] = -1;
+		$colorArr = array();
+		for($a = 0; $a < count($g); $a+=1) $colorArr[$a] = -1;
 
-    	$colorArr[0] = 1; // src
-    	$q = array();
-        array_push($q, 0);
+		$colorArr[0] = 1; // src
+		$q = array();
+		array_push($q, 0);
 
-        while(!empty($q)){
-        	$u = array_shift($q);
-        	for($a = 0; $a < count($g); $a+=1){
-        		if(($g[$u][$a] != 0 || $g[$a][$u] != 0) && $colorArr[$a] == -1){
-        			$colorArr[$a] = 1 - $colorArr[$u];
-        			array_push($q, $a);
-        		} 
-        	}
-        	if(!in_array(-1, $colorArr)) break;
-        }
-    	if(in_array(-1, $colorArr))return false;
-    	else return true;
-    }
+		while(!empty($q)){
+			$u = array_shift($q);
+			for($a = 0; $a < count($g); $a+=1){
+			if(($g[$u][$a] != 0 || $g[$a][$u] != 0) && $colorArr[$a] == -1){
+					$colorArr[$a] = 1 - $colorArr[$u];
+					array_push($q, $a);
+				} 
+			}
+			if(!in_array(-1, $colorArr)) break;
+		}
+		if(in_array(-1, $colorArr))return false;
+		else return true;
+	}
+
+	/*
+		Generate and return the Line Graph of the input graph
+	*/
+	function generateLineGraph($g){
+		$adjacencyList = array();
+		for($a = 0; $a < count($g); $a++){
+			for($b = 0; $b < $a+1; $b++){
+				if($g[$a][$b] != 0){
+					array_push($adjacencyList, array($a, $b));
+				}
+			}
+		}
+
+		$L = array();
+		for($a = 0; $a < count($adjacencyList); $a++){
+			for($b = 0; $b < count($adjacencyList); $b++){
+				if(count(array_intersect($adjacencyList[$a], $adjacencyList[$b])) > 0 
+				&& $a != $b) $L[$a][$b] = 1;
+				else $L[$a][$b] = 0;
+			}
+		}
+		return $L;
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
@@ -531,7 +560,7 @@
 	///////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
 
-    /*
+	/*
 		- Slightly alters input graph by either:
 			1. Transplanting an edge
 			2. Removing an edge
@@ -540,79 +569,79 @@
 		- Lock is for making sure graph has very high likelyhood of being continuous.
 		But some graphs may not be able to be transformed in these ways, so after 10
 		tries, just return the non-continuous graph (a trivial case for GI()). 
-    */
-    function salt($g, $option){
-    	$lock = 0;
-    	while($lock < 10){
-	    	if($option == 1) $g = salt1($g);
-	    	elseif($option == 2) $g = salt2($g);
-	    	else $g = salt3($g);
+	*/
+	function salt($g, $option){
+		$lock = 0;
+		while($lock < 10){
+			if($option == 1) $g = salt1($g);
+			elseif($option == 2) $g = salt2($g);
+			else $g = salt3($g);
 
-	    	if(isConnected($g)) break;
-	    	else $lock += 1;
-	    }
+			if(isConnected($g)) break;
+			else $lock += 1;
+		}
 
-    	return $g;
-    }
+		return $g;
+	}
 
-    /*
+	/*
 		Transplant edge
-    */
-    function salt1($g){
-    	$n = rand(1,10);
-    	for($m = 0; $m < $n; $m+=1){
-    		$count = 0;
-	    	while($count < 1000){
-	    		$v0 = rand(0, count($g)-1);
-		    	$v1 = rand(0, count($g)-1);
-		    	$v2 = rand(0, count($g)-1);
-		    	$v3 = rand(0, count($g)-1);
-		    	if($v0 != $v2 && $v1 != $v3 && $v0 != $v3 && $v1 != $v2 &&
-		    	  ($g[$v0][$v1] != 0 && $g[$v2][$v3] == 0)) break;
-		    	else $count += 1;
-	    	}
+	*/
+	function salt1($g){
+		$n = rand(1,10);
+		for($m = 0; $m < $n; $m+=1){
+			$count = 0;
+			while($count < 1000){
+				$v0 = rand(0, count($g)-1);
+				$v1 = rand(0, count($g)-1);
+				$v2 = rand(0, count($g)-1);
+				$v3 = rand(0, count($g)-1);
+				if($v0 != $v2 && $v1 != $v3 && $v0 != $v3 && $v1 != $v2 &&
+				  ($g[$v0][$v1] != 0 && $g[$v2][$v3] == 0)) break;
+				else $count += 1;
+			}
 
-	    	$temp = $g[$v0][$v1];
-	    	$g[$v0][$v1] = $g[$v2][$v3];
-	    	$g[$v2][$v3] = $temp;
-    	}
-    	return $g;
-    }
+			$temp = $g[$v0][$v1];
+			$g[$v0][$v1] = $g[$v2][$v3];
+			$g[$v2][$v3] = $temp;
+		}
+		return $g;
+	}
 
-    /*
+	/*
 		Remove edge
-    */
-    function salt2($g){
-    	$lock = false;
-    	for($a = 0; $a < count($g); $a+=1){
-    		for($b = 0; $b < count($g); $b+=1){
-    			if($g[$a][$b] != 0 || $g[$b][$a] != 0){
-    				$g[$a][$b] = 0;
-    				$g[$b][$a] = 0;
-    				$lock = true;
-    				break;
-    			}
-    		}
-    		if($lock) break;
-    	}
-    	return $g;
-    }
+	*/
+	function salt2($g){
+		$lock = false;
+		for($a = 0; $a < count($g); $a+=1){
+			for($b = 0; $b < count($g); $b+=1){
+				if($g[$a][$b] != 0 || $g[$b][$a] != 0){
+					$g[$a][$b] = 0;
+					$g[$b][$a] = 0;
+					$lock = true;
+					break;
+				}
+			}
+			if($lock) break;
+		}
+		return $g;
+	}
 
-    /*
+	/*
 		Change edge weight
-    */
+	*/
 	function salt3($g){
 		$lock = false;
-    	for($a = 0; $a < count($g); $a+=1){
-    		for($b = 0; $b < count($g); $b+=1){
-    			if($g[$a][$b] != 0){
-    				$g[$a][$b] = 1023456789;
-    				$lock = true;
-    				break;
-    			}
-    		}
-    		if($lock) break;
-    	}
-    	return $g;
+		for($a = 0; $a < count($g); $a+=1){
+			for($b = 0; $b < count($g); $b+=1){
+				if($g[$a][$b] != 0){
+					$g[$a][$b] = 1023456789;
+					$lock = true;
+					break;
+				}
+			}
+			if($lock) break;
+		}
+		return $g;
 	}
 ?>
