@@ -29,7 +29,7 @@
 	/*
 		- Returns true if graph is bipartite.
 		- Returns false if graph is not bipartite.
-
+		- NOTE: Graphs sent here are made undirected as a pre-process
 		- NOTE: Used BFS approach described at:
 		geeksforgeeks.org/check-graphs-cycle-odd-length/
 	*/
@@ -37,14 +37,12 @@
 		for($a = 0; $a < count($g); $a+=1){
 			if($g[$a][$a] == 1) return false;
 		}
-
 		$colorArr = array();
 		for($a = 0; $a < count($g); $a+=1) $colorArr[$a] = -1;
-
 		$colorArr[0] = 1;
+
 		$q = array();
 		array_push($q, 0);
-
 		while(!empty($q)){
 			$u = array_shift($q);
 			for($a = 0; $a < count($g); $a+=1){
@@ -70,11 +68,9 @@
 	function completeBipartite($g){
 		$colorArr = array();
 		for($a = 0; $a < count($g); $a+=1) $colorArr[$a] = -1;
-
 		$colorArr[0] = 1;
 		$q = array();
 		array_push($q, 0);
-
 		while(!empty($q)){
 			$u = array_shift($q);
 			for($a = 0; $a < count($g); $a+=1){
@@ -147,15 +143,12 @@
 		}else{
 			$a = mirrorDirections($a); // from graphBuilder.php
 			$b = mirrorDirections($b);
-
 			if(!isConnected($a) || !isConnected($b)){
 				$r = array(0, 1, 0);
 				return $r;
 			}
-
 			$aBipartite = isBipartite($a);
 			$bBipartite = isBipartite($b);
-
 			if(!$aBipartite && !$bBipartite){
 				$temp = canonicalNameCompare($a, $b, false);
 				$r = array($temp[0], 2, $temp[1]);
@@ -181,7 +174,6 @@
 
 	/*
 		Tests the gamma graphs of two input graphs for isomorphism.
-
 		- Modified version of original function described in "theAlgorithms.php"
 		- Instead of performing 2D sort, calls upon bt() for GI determination. 
 	*/
@@ -219,11 +211,13 @@
 				$gammaB[$a] .= $gamma2[$a][$b];	
 			}
 		}
+
 		$gammaAtemp = $gammaA;
 		$gammaBtemp = $gammaB;
 		sort($gammaAtemp);
 		sort($gammaBtemp);
 
+		$ret = false;
 		if($gammaAtemp === $gammaBtemp){
 			$og1 = eightToZero($og1);
 			$og2 = eightToZero($og2);
@@ -242,6 +236,7 @@
 						$permutationMatrix[$a][$b] = 0;
 					}
 				}
+
 				$ret = bt($gammaA, $gammaB, $og1, $og2, $permutationMatrix, $used, 0);
 			}
 		} else {
@@ -252,7 +247,7 @@
 		if($ret){
 			$r[0] = 1;
 			$r[1] = $avg;
-		}else{
+		} else {
 			$r[0] = 0;
 			$r[1] = $avg;
 		}
@@ -302,7 +297,6 @@
 				}
 				$crc = $o;
 
-				// Used to distinguish rounds
 				for($a = 0; $a < count($gamma[$v]); $a+=1){
 					$gamma[$v][$a] .= '2';
 				}
@@ -317,6 +311,7 @@
 				if($acheck || $lock2) $lock = true;
 			}
 		}
+
 		return $gamma;
 	}
 
@@ -332,9 +327,11 @@
 	*/
 	function bt($gammaA, $gammaB, $g1, $g2, $p, $used, $row){
 		if($row == count($g1)){
-			if(matrixMult(matrixTranspose($p), matrixMult($g1, $p)) == $g2) 
+			if(matrixMult(matrixTranspose($p), matrixMult($g1, $p)) == $g2){
 				return true;
-			else return false;
+			} else {
+				return false;
+			}
 		} else {
 			for($b = 0; $b < count($gammaB); $b+=1){
 				if($used[$b] == -1){
