@@ -9,9 +9,9 @@
 	function getMatrixString($m){
 		$str = "";
 		for($a = 0; $a < count($m); $a+=1){ 
-	    	for($b = 0; $b < count($m); $b+=1){
-	      		$str .= ',' . $m[$a][$b];
-	      	}
+			for($b = 0; $b < count($m); $b+=1){
+				$str .= ',' . $m[$a][$b];
+			}
 	  	}
 	  	return $str;
 	}
