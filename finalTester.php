@@ -1,5 +1,5 @@
 <?php
-	require 'theAlgorithm.php';
+	require 'theAlgorithm.php'; 
 	require 'graphBuilder.php';
 
 	/*

@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	/*
 		Returns the graph complement of a simple graph input

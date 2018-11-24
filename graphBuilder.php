@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	/*
 		- Makes random graph with vertex count = $n via:
